@@ -1,0 +1,4 @@
+rootProject.name = 'springcloud-learning'
+include 'provider01'
+include 'consumer01'
+
