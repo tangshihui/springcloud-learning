@@ -1,6 +1,15 @@
 spring:
+  profiles:
+    active: dev
   cloud:
     nacos:
+      server-addr: 10.100.39.212:8848
       discovery:
-        server-addr: 10.100.39.212:8848
         service: provider01
+      config:
+        username: nacos
+        password: nacos
+        namespace: 6f58cc0d-ea1f-4f63-bf44-bd78ca20f10b
+        group: DEFAULT_GROUP
+        prefix: gridx
+        file-extension: yaml  #data-id: ${prefix}-${spring.profile.active}.${file-extension}

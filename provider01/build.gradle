@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    //implementation('com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config')
+    implementation('com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config')
     //automate register service to nacos
     //https://github.com/alibaba/spring-cloud-alibaba/tree/2.2.x/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example
     implementation('com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery')
