@@ -39,14 +39,18 @@ public class ConfigController {
 
 
     @GetMapping("/{dataId}")
-    public String getUtilityConfig(@PathVariable("dataId") String dataId) {
-        return getConfig(dataId);
+    public String getUtilityConfig(@PathVariable("dataId") String dataId, @RequestParam(value = "group", required = false) String group) {
+        return getConfig(dataId, group);
     }
 
 
-    String getConfig(String dataId) {
+    String getConfig(String dataId, String groupValue) {
         String nacosSever = "10.100.39.212";//nacosConfig.server;
         String group = nacosConfig.group;
+        if (groupValue!=null && groupValue.length()>0){
+            group = groupValue;
+        }
+
         Properties properties = new Properties();
         properties.put(PropertyKeyConst.SERVER_ADDR, nacosSever);
         properties.put(PropertyKeyConst.USERNAME, "nacos");
