@@ -4,3 +4,4 @@ spring:
       discovery:
         server-addr: 10.100.39.212:8848
         service: consumer01
+        namespace: 6f58cc0d-ea1f-4f63-bf44-bd78ca20f10b

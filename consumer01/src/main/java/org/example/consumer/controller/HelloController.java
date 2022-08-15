@@ -1,6 +1,7 @@
 package org.example.consumer.controller;
 
 import org.example.consumer.feign.service.FeignCalculatorService;
+import org.example.consumer.feign.service.FeignHelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class HelloController {
     @Autowired
     private FeignCalculatorService calculatorService;
 
+    @Autowired
+    private FeignHelloService helloService;
+
 
     @GetMapping("/hello/{name}")
     public String hello(@PathVariable("name") String name) {
@@ -22,7 +26,7 @@ public class HelloController {
         logger.warn("warn message");
         logger.error("error message");
 
-        return calculatorService.hello(name);
+        return helloService.hello(name);
     }
 
 
