@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.3.12.RELEASE'
+    id 'org.springframework.boot' version '2.6.11'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 
 
 ext {
-    set('springCloudVersion', "Hoxton.SR12")
-    set('springCloudAlibabaVersion', "2.2.8.RELEASE")
+    set('springCloudVersion', "2021.0.3")
+    set('springCloudAlibabaVersion', "2021.0.1.0")
     mysqlVersion = '8.0.25'
     lombokVersion = '1.18.20'
 }
@@ -29,7 +29,7 @@ subprojects {
     version '1.0-SNAPSHOT'
 
     // 指定JDK版本
-    sourceCompatibility = '11'
+    sourceCompatibility = '8'
     jar.enabled = true
 
     // 指定仓库地址

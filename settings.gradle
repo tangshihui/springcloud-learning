@@ -2,4 +2,4 @@ rootProject.name = 'springcloud-learning'
 include 'provider-hello'
 include 'provider-calculate'
 include 'consumer01'
-
+include 'service-demo'
