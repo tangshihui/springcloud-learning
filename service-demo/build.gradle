@@ -7,7 +7,12 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 archivesBaseName = 'service-demo'
 sourceCompatibility = '1.8'
-bootJar.enabled = true
+bootJar {
+    enabled = true
+    manifest {
+        attributes 'Start-Class': 'org.example.demo.Application'
+    }
+}
 
 repositories {
     mavenCentral()
@@ -23,6 +28,8 @@ dependencyManagement {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group: 'org.apache.skywalking', name: 'apm-toolkit-logback-1.x', version: '8.12.0'
+
 
     //automate register service to nacos
     //https://github.com/alibaba/spring-cloud-alibaba/tree/2.2.x/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example
