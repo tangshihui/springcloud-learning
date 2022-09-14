@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class UserController {
@@ -32,6 +33,12 @@ public class UserController {
 
     @GetMapping("/user/{id}/score")
     public String userScore(@PathVariable("id")Integer id) {
+        try {
+            int i = new Random().nextInt(5) + 1;
+            Thread.sleep(100 * i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return restTemplate.getForEntity("http://127.0.0.1:9080/user/"+id+"/score",String.class,id).toString();
     }
 
