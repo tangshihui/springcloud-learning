@@ -2,6 +2,7 @@ package org.example.demo.interceptor;
 
 
 import org.apache.skywalking.apm.toolkit.trace.Trace;
+import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,10 @@ public class GlobalInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestId = request.getParameter("requestId");
         logger.info("requestId:{}", requestId);
+
+        if (requestId != null) {
+            TraceContext.putCorrelation("requestId", requestId);
+        }
 
         return true;
     }
