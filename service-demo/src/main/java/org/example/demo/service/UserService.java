@@ -1,5 +1,6 @@
 package org.example.demo.service;
 
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.example.demo.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import java.util.Random;
 public class UserService {
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    @Trace
     public List<User> listAll() {
         long start = System.currentTimeMillis();
         try {
