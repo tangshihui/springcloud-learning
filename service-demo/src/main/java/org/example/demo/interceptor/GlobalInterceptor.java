@@ -1,6 +1,7 @@
 package org.example.demo.interceptor;
 
 
+import org.apache.skywalking.apm.toolkit.trace.ActiveSpan;
 import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class GlobalInterceptor implements HandlerInterceptor {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Trace
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestId = request.getParameter("requestId");
@@ -23,6 +25,7 @@ public class GlobalInterceptor implements HandlerInterceptor {
 
         if (requestId != null) {
             TraceContext.putCorrelation("requestId", requestId);
+            //ActiveSpan.tag("requestId", requestId);
         }
 
         return true;

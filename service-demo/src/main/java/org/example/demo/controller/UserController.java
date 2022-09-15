@@ -39,7 +39,7 @@ public class UserController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return restTemplate.getForEntity("http://127.0.0.1:9080/user/"+id+"/score",String.class,id).toString();
+        return restTemplate.getForEntity("http://127.0.0.1:9080/user/" + id + "/score", String.class, id).toString();
     }
 
 }
