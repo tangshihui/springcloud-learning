@@ -30,7 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation group: 'org.apache.skywalking', name: 'apm-toolkit-logback-1.x', version: '8.12.0'
-    implementation 'org.example.exception:exception-spring-boot-starter:0.0.1'
+    implementation 'org.example.exception:exception-spring-boot-starter:0.0.2'
 
 
     //automate register service to nacos
