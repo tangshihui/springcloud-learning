@@ -1,22 +1,24 @@
 plugins {
     id 'java'
     id 'org.springframework.boot'
+    id 'maven-publish'
 }
 
 group 'org.example'
-version '1.0-SNAPSHOT'
-archivesBaseName = 'service-score'
+version '0.0.1'
+archivesBaseName = 'exception-spring-boot-starter'
 sourceCompatibility = '1.8'
+
 bootJar {
     enabled = true
     manifest {
-        attributes 'Start-Class': 'org.example.score.Application'
+        attributes 'Start-Class': 'org.example.exception.Application'
     }
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
+    mavenLocal()
 }
 
 dependencyManagement {
@@ -30,8 +32,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation group: 'org.apache.skywalking', name: 'apm-toolkit-logback-1.x', version: '8.12.0'
-    implementation 'org.example.exception:exception-spring-boot-starter:0.0.1'
-
+    implementation "org.apache.skywalking:apm-toolkit-trace:8.12.0"
 
     //automate register service to nacos
     //https://github.com/alibaba/spring-cloud-alibaba/tree/2.2.x/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example
@@ -47,4 +48,20 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.example.exception'
+            artifactId = 'exception-spring-boot-starter'
+            version = '0.0.1'
+
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
 }

@@ -2,6 +2,7 @@ package org.example.demo.service;
 
 import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
+import org.example.demo.exception.NotFoundException;
 import org.example.demo.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +45,7 @@ public class UserService {
         }
 
         Optional<String> requestId = TraceContext.getCorrelation("requestId");
-        logger.warn(requestId.orElse("requestId") +":"+ getDummyLog());
+        logger.warn(requestId.orElse("requestId") +":"+ "test");
 
         long elapsed = System.currentTimeMillis() - start;
         logger.debug(" 1debug elapsed:" + elapsed + " ms");
@@ -59,5 +60,23 @@ public class UserService {
                 add(new User(3, "David", "SH"));
             }
         };
+    }
+
+
+    public User getById(int id) throws NotFoundException {
+        try {
+            if (id < 0) {
+                throw new NotFoundException("user not found by id:" + id);
+            }
+
+            if (id > 10) {
+                throw new RuntimeException("user not found by id:" + id);
+            }
+            return new User(3, "David", "SH");
+        } catch (Exception x){
+            logger.info("error");
+            throw x;
+        }
+
     }
 }

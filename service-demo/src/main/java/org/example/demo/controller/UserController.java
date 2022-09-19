@@ -1,14 +1,15 @@
 package org.example.demo.controller;
 
+import org.example.demo.exception.NotFoundException;
+import org.example.demo.model.BizResponse;
 import org.example.demo.model.User;
 import org.example.demo.service.Calculator;
 import org.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -24,11 +25,21 @@ public class UserController {
     RestTemplate restTemplate = new RestTemplate();
 
 
-    @GetMapping("/users")
-    public List<User> users() {
-        return userService.listAll();
+    @ResponseBody
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    public BizResponse<List<User>> users() {
+        List<User> users = userService.listAll();
+        return BizResponse.OK(users);
     }
 
+
+    @ResponseBody
+    @GetMapping("/user/{id}")
+    public BizResponse<User>  getUser(@PathVariable("id")Integer id) throws NotFoundException {
+        return BizResponse.OK(userService.getById(id));
+    }
+
+    //todo 不要在每个方法上加BizResponse
 
 
     @GetMapping("/user/{id}/score")

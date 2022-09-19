@@ -1,7 +1,6 @@
-package org.example.demo.interceptor;
+package org.example.exception.interceptor;
 
 
-import org.apache.skywalking.apm.toolkit.trace.ActiveSpan;
 import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.slf4j.Logger;

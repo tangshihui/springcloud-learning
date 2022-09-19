@@ -4,3 +4,5 @@ include 'provider-calculate'
 include 'consumer01'
 include 'service-demo'
 include 'service-score'
+include 'exception-spring-boot-starter'
+

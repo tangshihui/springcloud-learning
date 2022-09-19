@@ -1,5 +1,6 @@
 package org.example.score.controller;
 
+import org.example.exception.annotation.EnableGlobalExceptionHandler;
 import org.example.score.model.User;
 import org.example.score.service.Calculator;
 import org.example.score.service.UserService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@EnableGlobalExceptionHandler
 @RestController
 public class UserController {
 
