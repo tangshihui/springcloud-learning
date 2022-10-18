@@ -1,12 +1,19 @@
 plugins {
     id 'java'
     id 'org.springframework.boot'
+    id 'idea'
+}
+
+idea {
+    module {
+        downloadSources = true
+    }
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 archivesBaseName = 'service-score'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 bootJar {
     enabled = true
     manifest {
@@ -30,7 +37,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation group: 'org.apache.skywalking', name: 'apm-toolkit-logback-1.x', version: '8.12.0'
-    implementation 'org.example.exception:exception-spring-boot-starter:0.0.2'
+   // implementation 'org.example.exception:exception-spring-boot-starter:0.0.2'
+
+    //implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-consul-config' // used by consul config
+//    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'  // used by bootstrap consul
+
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    implementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+
 
 
     //automate register service to nacos

@@ -1,6 +1,5 @@
 package org.example.score.controller;
 
-import org.example.exception.annotation.DisableGlobalExceptionHandler;
 import org.example.score.model.UserScore;
 import org.example.score.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ScoreController {
     }
 
 
-    @DisableGlobalExceptionHandler
+    //@DisableResponseWrapper
     @GetMapping("/scores")
     public List<UserScore> userScores() {
         return scoreService.listAll();

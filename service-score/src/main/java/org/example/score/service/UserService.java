@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+public interface UserService {
+    List<User> listAll();
+    User getUser(Integer id);
 
-    public List<User> listAll() {
-        return  new UserDAO().listAll();
-    }
+    Integer createUser(User user);
+
+    Integer deleteUser(User user);
+
+    int updateUser(User user);
 }

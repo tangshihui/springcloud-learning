@@ -14,3 +14,46 @@
 #        group: DEFAULT_GROUP
 #        prefix: gridx
 #        file-extension: yaml  #data-id: ${prefix}-${spring.profile.active}.${file-extension}
+
+spring:
+  profiles:
+    active: dev
+
+
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8510
+#      config:
+#        enabled: true
+#        prefix: config
+#        default-context: service-score
+#        profile-separator: '-'
+#        format: yaml
+#        data-key: application-${spring.profiles.active}
+#        acl-token: cdd24557-62a9-9301-27bc-1273ae7b48dc
+#        # 以上配置可以理解为:加载 config/service-score/ 文件夹下Key: application-dev 的Value 对应的配置
+#        watch:
+#          enabled: true
+#          delay: 5000
+
+---
+spring:
+  profiles:
+    active: qa
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8501
+#      config:
+#        enabled: true
+#        prefix: config
+#        default-context: service-user
+#        profile-separator: '-'
+#        format: yaml
+#        data-key: application-${spring.profiles.active}
+#        acl-token: 4935a84a-fbc6-33c4-40be-c420092b02ad #1a3fa880-3cf1-3870-3caf-77b5f083d660 #
+#        # 以上配置可以理解为:加载 config/service-score/ 文件夹下Key: application-dev 的Value 对应的配置
+#        watch:
+#          enabled: true
+#          delay: 5000

@@ -9,28 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class UserDAO {
-    private Logger logger = LoggerFactory.getLogger(UserDAO.class);
+public interface UserDAO {
+    List<User> listAll();
 
+    User getUser(Integer id);
 
-    public List<User> listAll(){
-        long start = System.currentTimeMillis();
-        try {
-            int i = new Random().nextInt(5) + 1;
-            Thread.sleep(200 * i);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    Integer createUser(User user);
 
+    Integer deleteUser(User user);
 
-        long elapsed = System.currentTimeMillis() - start;
-        logger.info("dao elapsed:" + elapsed + " ms");
-        return new ArrayList<User>() {
-            {
-                add(new User(1, "Tom", "BJ"));
-                add(new User(2, "July", "BJ"));
-                add(new User(3, "David", "SH"));
-            }
-        };
-    }
+    int updateUser(User user);
 }

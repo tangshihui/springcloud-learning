@@ -29,11 +29,12 @@ subprojects {
     version '1.0-SNAPSHOT'
 
     // 指定JDK版本
-    sourceCompatibility = '8'
+    sourceCompatibility = '17'
     jar.enabled = true
 
     // 指定仓库地址
     repositories {
+        mavenLocal()
         mavenCentral()
     }
 
